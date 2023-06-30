@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def calculator():
     # return render_template('calculator.html')
-    return render_template('calculatorCopy.html')
+    return render_template('calculatorOld.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

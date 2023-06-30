@@ -17,20 +17,16 @@
         <h1>Calculator</h1>
     </div>
 
-    <div class="container">
-        <h1 class="text-danger text-center" id="errorMessage"></h1>
-    </div>
-
     <!-- calc input form -->
     <form action="/" method="POST" class="text-warning">
-        
-        <div class="container bg-dark w-25" id="inputFormDiv">
+
+        <div class="container-fluid bg-dark w-25" id="inputFormDiv">
 
             <p class="" id="Broughtforw">Balance Brought Forward</p>
             <div class="input-group">
                 <span class="input-group-text">$</span>
                 <!-- <span class="input-group-text">0.00</span> -->
-                <input type="number" id="bbf" name="bbf" step=".01" class="form-control" value="0" aria-label="Dollar amount (with dot and two decimal places)">
+                <input type="number" id="bbf" name="bbf" step="1" class="form-control" value="0" aria-label="Dollar amount (with dot and two decimal places)">
             </div>
             
             <div class="container mt-2 gw-20 text-center">
@@ -39,19 +35,19 @@
                     <p class="text-warning">Deposits</p>
                   </div>
                   <div class="col-sm">
-                    <button class="btn btn-primary" type="button"  id="plusButton">+</button>
+                    <button class="btn btn-primary" type="button"  id="plusButtonDeposit">+</button>
                   </div>
                   <div class="col-sm">
-                    <button class="btn btn-primary" type="button" id="minusButton">-</button>
+                    <button class="btn btn-primary" type="button" id="minusButtonDeposit">-</button>
                   </div>
                 </div>
               </div>
 
             <div class="input-group" id="depositInputDiv">
                 
-                <!-- <span class="input-group-text">$</span> -->    
+                <span class="input-group-text">$</span>    
                 <!-- <span class="input-group-text">0.00</span> -->
-                <input type="number" id="deposits0"  name="deposits" class="depositInputs0" value="0" aria-label="Dollar amount (with dot and two decimal places)">
+                <input type="number" id="deposits0"  placeholder="0" name="deposits" class="form-control" value="0" aria-label="Dollar amount (with dot and two decimal places)">
                 <!-- <input type="number" id="deposits0"  name="deposits" class="depositInputs" value="0" aria-label="Dollar amount (with dot and two decimal places)"> -->
             </div>
 
@@ -63,10 +59,10 @@
                 <input type="number" id="checkAmount" name="checkAmount" class="form-control" value="0" aria-label="Dollar amount (with dot and two decimal places)">
             </div>
 
-            <div class="container mt-2 gw-20 text-center">
+            <div class="container-fluid mt-2 text-center">
                 <div class="row">
                   <div class="col-sm">
-                    <p class="text-warning">Other Deductions</p>
+                    <p class="text-warning">Deductions</p>
                   </div>
                   <div class="col-sm">
                     <button class="btn btn-primary" type="button"  id="plusButtonDeductions">+</button>
@@ -77,11 +73,11 @@
                 </div>
             </div>
 
-            <div class="input-group" id="deductionInputDiv">
+            <div class="input-group" id="deductionInputDiv0">
 
-                <!-- <span class="input-group-text">$</span> -->
+                <span class="input-group-text">$</span>
                 <!-- <span class="input-group-text">0.00</span> -->
-                <input type="number" id="otherDeductions" name="otherDeductions" class="form-control" value="0" aria-label="Dollar amount (with dot and two decimal places)">
+                <input type="number" id="otherDeductions0" name="otherDeductions" class="form-control" value="0" aria-label="Dollar amount (with dot and two decimal places)">
             </div>
 
             
@@ -91,8 +87,9 @@
 
         <div class="container text-center mt-3">
             <button type="button" id="submitButton" name="submission" value="submit" class="btn btn-primary">Calculate</button>
+            <button type="button" id="clearButton" name="submission" value="submit" class="btn btn-info">Clear</button>
         </div> 
-        <!-- sdafdaf -->
+      
     </form>
 
     <!-- results -->
@@ -100,6 +97,7 @@
 
         <h2 id="depositTotal"></h2>
         <h2 id="balance"></h2>
+        <h2 id="otherDeductionsOutput"></h2>
         <h2 id="balanceForward"></h2>
     </div>
 
