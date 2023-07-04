@@ -1,21 +1,20 @@
-const balanceBroughtForward = document.getElementById("bbf")
-const deposits =  document.getElementById("deposits")
-const checkAmount = document.getElementById("checkAmount")
-const deductions = document.getElementById("deductions")
-const otherDeductions =  document.getElementById("otherDeductions")
-const deductionInputDiv = document.getElementById("deductionInputDiv")
-const depositInputDiv =  document.getElementById("depositInputDiv")
-const depositTotal =  document.getElementById("depositTotal")
-const balance =  document.getElementById("balance")
-const balanceForward =  document.getElementById("balanceForward")
-const submitButton = document.getElementById("submitButton")
-const clearButton = document.getElementById("clearButton")
-const errorMessage = document.getElementById("errorMessage")
+let bbfInput = document.getElementById('bbfInput')
+let depositInput = document.getElementById('depositInput')
+let checkAmountInput = document.getElementById('checkAmountInput')
+let deductionsInput = document.getElementById('deductionsInput')
 
-submitButton.addEventListener('click', collectUserValues)
-clearButton.addEventListener('click', clearUserValues)
+let depositTotal = document.getElementById('depositTotal')
+let balance = document.getElementById('balance')
+let otherDeductions = document.getElementById('otherDeductions')
+let balanceForward = document.getElementById('balanceForward')
 
-class calculator{
+let calculateButton = document.getElementById('calculateButton')
+let resetButton = document.getElementById('resetButton')
+
+calculateButton.addEventListener('click', collectUserValues)
+resetButton.addEventListener('click', clearUserValues)
+
+class balanceCalculator{
     constructor(balanceBBFValue, depositsValue, checkAmountValue, deductionsValue) {
         this.balanceBBFValue = balanceBBFValue  
         this.depositsValue = depositsValue
@@ -40,10 +39,14 @@ class calculator{
     }
 
     displayResults() {
-        depositTotal.innerHTML = this.addTotal().toFixed(2)
-        balance.innerHTML = this.findBalance().toFixed(2)
-        otherDeductions.innerHTML = this.addDeductionValue().toFixed(2)
-        balanceForward.innerHTML = this.findBalanceForward().toFixed(2)
+        let results = []
+        let total = ` Total $${this.addTotal().toFixed(2)}`
+        let balance = `Balance $${this.findBalance().toFixed(2)}`
+        let otherDeductions = `Deductions Total $${this.addDeductionValue().toFixed(2)}`
+        let balanceForward = `Balance Forward $${this.findBalanceForward().toFixed(2)}`
+        results.push(total,balance, otherDeductions, balanceForward)
+        
+        return results
     }
 
     clearValues() {
@@ -51,51 +54,70 @@ class calculator{
         this.depositsValue = null
         this.checkAmountValue = null
         this.deductionsValue = null
-        depositTotal.innerHTML = ""
-        balance.innerHTML = ""
-        otherDeductions.innerHTML = ""
-        balanceForward.innerHTML = ""
-
-        balanceBroughtForward.value = ''
-        deposits.value = ''
-        checkAmount.value = ''
-        deductions.value = ''
     }
 
+}
+
+function createInputField() {
+   
 }
 
 let testing
 function collectUserValues() {
-    let balanceBBFValue = balanceBroughtForward.value
-    let depositsValue = deposits.value
-    let checkAmountValue = checkAmount.value
-    let deductionsValue = deductions.value
+    // let depositValuesTotal = 0
+    let BBFValue = bbfInput.value
+    let depositValue = depositInput.value
+    let checkAmountValue = checkAmountInput.value
+    let deductionsValue = deductionsInput.value
 
-    if(balanceBBFValue != "" && depositsValue != "" && checkAmountValue != "" && typeof deductionsValue != ""){
-        console.log(balanceBBFValue)
-        console.log(depositsValue)
-        console.log(checkAmountValue)
-        console.log(deductionsValue)
-        
-        testing = new calculator(parseFloat(balanceBBFValue),parseFloat(depositsValue),parseFloat(checkAmountValue),parseFloat(deductionsValue))
-        testing.displayResults()
-    } if (balanceBBFValue == "" ){ 
-        // errorMessage.innerHTML = 'ERROR: Must enter a number in all fields'
-        balanceBBFValue = 0
-    } if(depositsValue == "") {
-        depositsValue = 0
-    } if(checkAmountValue == "") {
-        checkAmountValue = 0 
-    } if(deductionsValue == "") {
+    if(BBFValue != "" && depositValue != "" && checkAmountValue != "" && deductionsValue != ""){
+        testing = new balanceCalculator(parseFloat(BBFValue), parseFloat(depositValue), parseFloat(checkAmountValue), parseFloat(deductionsValue))
+        displayResults()
+    } 
+    if(depositValue == "") {
+        depositValue = 0
+    } 
+    if(checkAmountValue == "") {
+        checkAmountValue = 0
+    } 
+    if(deductionsValue == "") {
         deductionsValue = 0
-    }
-    
-    testing = new calculator(parseFloat(balanceBBFValue),parseFloat(depositsValue),parseFloat(checkAmountValue),parseFloat(deductionsValue))
-    testing.displayResults()
+    } 
+    if(BBFValue == "") {
+        BBFValue = 0
+    } 
+
+    testing = new balanceCalculator(parseFloat(BBFValue), parseFloat(depositValue), parseFloat(checkAmountValue), parseFloat(deductionsValue))
+    displayResults()
 }
 
+function displayResults() {
+    
+    let results = testing.displayResults()
+    depositTotal.innerHTML = results[0]
+    balance.innerHTML = results[1]
+    otherDeductions.innerHTML = results[2]
+    balanceForward.innerHTML = results[3]
+    }   
+
 function clearUserValues() {
-    testing.clearValues()
+
+    let text = "Are You Sure You Want To Clear?";
+    if (confirm(text) == true) {
+        testing.clearValues()
+        depositTotal.innerHTML = ''
+        balance.innerHTML = ''      
+        otherDeductions.innerHTML = ''  
+        balanceForward.innerHTML = ''
+        bbfInput.value = '' 
+        depositInput.value = '' 
+        checkAmountInput.value = '' 
+        deductionsInput.value = '' 
+    } else {
+        text = "You canceled!";
+    }
+
+   
 }
 
 // 2690.76 1759.44 327.25 1276.2

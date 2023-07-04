@@ -1,0 +1,35 @@
+#mainBody {
+    /* background-image: linear-gradient(to bottom right, maroon, navy); */
+    background-color: #eeeeee;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+#inputFormDiv {
+    padding: 0px;
+}
+
+p, label {
+   font-size: large;
+   font-weight: bold; 
+   color: #5C695E;
+}
+
+#form {
+    background-color: white;
+
+}
+
+h1 {
+    /* color: white; */
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #04691e;
+    /* font-weight: 500; */
+}
+
+#buttons {
+    margin-top: 30px;
+}

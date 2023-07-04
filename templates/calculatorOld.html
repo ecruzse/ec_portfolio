@@ -3,99 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href=""> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='calculator.css')}}">
     <title>Calculator</title>
+
+    <style>
+      body {
+        font-family:'PT Serif', serif;
+      }
+    </style>
 </head>
 
-<body class="bg-dark" >
+<body class="" id="mainBody">
     
 {% block content %}
   
   <!-- title -->
-  <div class="text-primary text-center mt-5">
-    <h1>Calculator</h1>
+  <div class=" text-center mt-5">
+    <h1>Balance Calculator</h1>
+    
   </div>
 
-  <div class="justify-content-xl-around">
-    <form action="/" method="POST" class="text-warning">
-      <div class="container-fluid w-25" id="inputFormDiv">
-          <p class="" id="Broughtforw">Balance Brought Forward</p>
-          <div class="input-group">
-              <span class="input-group-text">$</span>
-              <!-- <span class="input-group-text">0.00</span> -->
-              <input type="number" id="bbf" name="bbf"  placeholder="0" step="1" class="form-control"  aria-label="Dollar amount (with dot and two decimal places)">
-          </div>
-          
-          <div class="container mt-2 ">
-              <div class="row">
-                <div class="col-4" >
-                  <p>Deposits</p>
-                </div>
-                <div class="col-2">
-                  <button class="btn btn-primary" type="button"  id="plusButtonDeposit">+</button>
-                </div>
-                <div class="col-1">
-                  <button class="btn btn-primary" type="button" id="minusButtonDeposit">-</button>
-                </div>
-              </div>
-            </div>
 
-          <div class="input-group" id="depositInputDiv">
-              
-              <span class="input-group-text">$</span>    
-              <!-- <span class="input-group-text">0.00</span> -->
-              <input type="number" id="deposits"  placeholder="0" name="deposits" class="form-control"  aria-label="Dollar amount (with dot and two decimal places)">
-              <!-- <input type="number" id="deposits0"  name="deposits" class="depositInputs"  aria-label="Dollar amount (with dot and two decimal places)"> -->
-          </div>
+<!--FORM START-->
 
-          <p class="text-warning mt-2">Check Amount</p>
-          <div class="input-group">
-            
-              <span class="input-group-text">$</span>
-              <!-- <span class="input-group-text">0.00</span> -->
-              <input type="number" id="checkAmount" placeholder="0" name="checkAmount" class="form-control"  aria-label="Dollar amount (with dot and two decimal places)">
-          </div>
 
-          <div class="container-fluid mt-2 ">
-              <div class="row">
-                <div class="col-4">
-                  <p class="text-warning">Deductions</p>
-                </div>
-                <div class="col-2">
-                  <button class="btn btn-primary" type="button" id="plusButtonDeductions">+</button>
-                </div>
-                <div class="col-1">
-                  <button class="btn btn-primary" type="button" id="minusButtonDeductions">-</button>
-                </div>
-              </div>
-          </div>
+  <div class="col-md-6 mx-auto col-lg-4 col-sm-3">
+    <form action="POST" class="p-4 p-md-5 border rounded-3" id="form">
 
-          <div class="input-group" id="deductionInputDiv0">
-
-              <span class="input-group-text">$</span>
-              <!-- <span class="input-group-text">0.00</span> -->
-              <input type="number" id="deductions" placeholder="0" name="otherDeductions" class="form-control"  aria-label="Dollar amount (with dot and two decimal places)">
-          </div>
-
+      <div class="">
+        <label class="form-label">Balance Brought Forward</label>
+        <input type="number" name="bbf" id="bbfInput" class="form-control" placeholder="0.00">
       </div>
 
-      <div class="container text-center mt-3">
-          <button type="button" id="submitButton" name="submission" value="submit" class="btn btn-primary">Calculate</button>
-          <button type="button" id="clearButton" name="submission" value="submit" class="btn btn-info">Clear</button>
-      </div> 
-    
+      <p>Deposits</p>
+      <div class="">
+        <input type="number" name="bbf" id="depositInput" class="form-control" placeholder="0.00">
+      </div>
+
+      <div>
+        <h2 id="depositTotal"></h2>
+      </div>
+      
+      <p>Check Amount</p>
+      <div class="">
+        <input type="number" name="bbf" id="checkAmountInput" class="form-control" placeholder="0.00">
+      </div>
+
+      <div>
+        <h2 id="balance"></h2>
+      </div>
+
+      <p>Deductions</p>
+      <div class="">
+        <input type="number" name="bbf" id="deductionsInput" class="form-control" placeholder="0.00">
+      </div>
+
+      <div>
+        <h2 id="otherDeductions"></h2>
+      </div>
+
+      <div>
+        <h2 id="balanceForward"></h2>
+      </div>
     </form>
+
+    <!-- <div class="d-flex gap-3 justify-content-center mt-1"> -->
+    <div id="buttons" class="d-grid gap-3 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary btn-lg" type="button" id="calculateButton">Calculate</button>
+      <button class="btn btn-info btn-lg btn-danger" type="button" id="resetButton">Reset</button>
+    </div>  
   </div>
 
-  <!-- results -->
-  <div class="container text-success text-center mt-3">
+ 
+    <!-- results -->
+    <div class="container text-center mt-3" id="calculationDisplay">
 
-      <h2 id="depositTotal"></h2>
-      <h2 id="balance"></h2>
-      <h2 id="otherDeductions"></h2>
-      <h2 id="balanceForward"></h2>
-  </div>
+      
+      
+      
+      
+    </div>
+  
 
 {% endblock %}
     
