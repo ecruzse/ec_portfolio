@@ -11,6 +11,16 @@ let balanceForward = document.getElementById('balanceForward')
 let calculateButton = document.getElementById('calculateButton')
 let resetButton = document.getElementById('resetButton')
 
+let dark = document.getElementById('dark')
+let gradient = document.getElementById('gradient')
+let light = document.getElementById('light')
+
+// background color change
+dark.addEventListener('click', darkBackground)
+gradient.addEventListener('click', gradientBackground)
+light.addEventListener('click', lightBackground)
+
+// clear and calculate buttons
 calculateButton.addEventListener('click', collectUserValues)
 resetButton.addEventListener('click', clearUserValues)
 
@@ -113,11 +123,24 @@ function clearUserValues() {
         depositInput.value = '' 
         checkAmountInput.value = '' 
         deductionsInput.value = '' 
-    } else {
-        text = "You canceled!";
-    }
+    } 
 
    
+}
+
+function darkBackground() {
+    document.getElementById('mainBody').style.backgroundImage = ''
+    document.getElementById('mainBody').style.backgroundColor = '#36454F'
+    document.getElementById('bcTitle').setAttribute('class','text-warning')
+}
+function gradientBackground() {
+    document.getElementById('mainBody').style.backgroundImage = 'linear-gradient(#750004, orange)'
+    document.getElementById('bcTitle').setAttribute('class','text-warning')
+}
+function lightBackground() {
+    document.getElementById('mainBody').style.backgroundImage = ''
+    document.getElementById('mainBody').style.backgroundColor = '#eeeeee'
+    document.getElementById('bcTitle').setAttribute('class','')
 }
 
 // 2690.76 1759.44 327.25 1276.2
