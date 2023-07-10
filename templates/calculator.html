@@ -7,17 +7,19 @@
 {% block content %} 
 
  <!-- title -->
- <div class=" text-center mt-5">
+ <div class="text-center mt-5">
     <h1 id="bcTitle">Balance Calculator</h1>
 </div>
 
+<!-- sets theme to dark -- data-bs-theme='dark'-->
+
 <!--FORM START-->
-  <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+  <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto" id="formDiv">
     <form action="POST" class="p-4 p-md-5 border rounded-3" id="form">
 
       <div class="">
         <label class="form-label">Balance Brought Forward</label>
-        <input type="number" name="bbf" id="bbfInput" class="form-control" placeholder="$0.00">
+        <input type="number" name="bbf" id="bbfInput" class="form-control" step="0.01" placeholder="$0.00">
       </div>
 
       <div>
@@ -25,17 +27,18 @@
       </div>
 
       <label class="form-label">Deposits</label>
-      <div class="">
-        <input type="number" name="bbf" id="depositInput" class="form-control" placeholder="$0.00">
+      <div class="input-group" id="depositsDiv">
+        <input type="number" name="bbf" id="depositInput" class="form-control " step="0.01" placeholder="$0.00" >
+        <button type="button" class="btn btn-primary" id="depositPlusButton" onclick="createUserInput(this)">+</button>
       </div>
 
-      <div>
-        <h2 id="depositTotal"></h2>
+      <div>  
+            <h2 id="depositTotal"></h2>
       </div>
       
       <label class="form-label">Check Amount</label>
       <div class="">
-        <input type="number" name="bbf" id="checkAmountInput" class="form-control" placeholder="$0.00">
+        <input type="number" name="bbf" id="checkAmountInput" class="form-control" step="0.01" placeholder="$0.00">
       </div>
 
       <div>
@@ -43,12 +46,16 @@
       </div>
 
       <label class="form-label">Deductions</label>
-      <div class="">
-        <input type="number" name="bbf" id="deductionsInput" class="form-control" placeholder="$0.00">
+      <div class="input-group" id="deductionsDiv">
+        <input type="number" name="bbf" id="deductionsInput" class="form-control " step="0.01" placeholder="$0.00">
+        <!-- <button type="button" class="btn btn-primary" id="deductionPlusButton"  onclick="startTransaction(this)">+</button> -->
+        <button type="button" class="btn btn-primary" id="deductionPlusButton"  onclick="createUserInput(this)">+</button>
       </div>
 
+      
+
       <div>
-        <h2 id="otherDeductions"></h2>
+        <h2 id="otherDeductions"></h2>  
       </div>
 
       <div>
@@ -57,36 +64,12 @@
     </form>
 
     <!-- calculate and reset buttons -->
-    <div id="buttons" class="d-grid gap-3 d-md-flex  mt-3 justify-content-md-end">
+    <div id="buttons" class="d-grid gap-3 mt-3 d-md-flex justify-content-sm-end">
       <button class="btn btn-primary btn-lg" type="button" id="calculateButton">Calculate</button>
       <button class="btn btn-info btn-lg btn-danger" type="button" id="resetButton">Reset</button>
     </div>  
   </div>
 
-  <form>
-    <fieldset disabled>
-      <legend>Disabled fieldset example</legend>
-      <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Disabled input</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-      </div>
-      <div class="mb-3">
-        <label for="disabledSelect" class="form-label">Disabled select menu</label>
-        <select id="disabledSelect" class="form-select">
-          <option>Disabled select</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-          <label class="form-check-label" for="disabledFieldsetCheck">
-            Can't check this
-          </label>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
-  </form>
 
 {% endblock %}
 

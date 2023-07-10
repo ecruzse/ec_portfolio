@@ -4,12 +4,10 @@ app = Flask(__name__)
 
 @app.route("/base", methods=['GET', 'POST'])
 def base():
-    # return render_template('calculator.html')
     return render_template('base.html')
 
-@app.route("/calculator", methods=['GET', 'POST'])
+@app.route("/calculator")
 def calculator():
-    # return render_template('calculator.html')
     return render_template('calculator.html')
 
 @app.route("/", methods=['GET', 'POST'])

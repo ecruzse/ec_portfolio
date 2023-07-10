@@ -1,3 +1,11 @@
+/*
+Name: Eric Cruz 
+Date: 7/8/23
+*/
+
+// TODO - CALCULATE THE DEPOSITS TOTAL JUST LIKE DEDUCTIONS TOTAL, RESET INPUTS FROM ADDED INPUTS 
+
+// DOM elements
 let bbfInput = document.getElementById('bbfInput')
 let depositInput = document.getElementById('depositInput')
 let checkAmountInput = document.getElementById('checkAmountInput')
@@ -11,41 +19,31 @@ let balanceForward = document.getElementById('balanceForward')
 let calculateButton = document.getElementById('calculateButton')
 let resetButton = document.getElementById('resetButton')
 
-let dark = document.getElementById('dark')
-let gradient = document.getElementById('gradient')
-let light = document.getElementById('light')
-
-// background color change
-dark.addEventListener('click', darkBackground)
-gradient.addEventListener('click', gradientBackground)
-light.addEventListener('click', lightBackground)
-
-// clear and calculate buttons
 calculateButton.addEventListener('click', collectUserValues)
-resetButton.addEventListener('click', clearUserValues)
+resetButton.addEventListener('click', resetUserValues)
 
-class balanceCalculator{
+//class performs calculations
+class BalanceCalculator {
     constructor(balanceBBFValue, depositsValue, checkAmountValue, deductionsValue) {
         this.balanceBBFValue = balanceBBFValue  
         this.depositsValue = depositsValue
         this.checkAmountValue = checkAmountValue
         this.deductionsValue = deductionsValue
     }
-
     addTotal() {
         return this.balanceBBFValue + this.depositsValue
     }   
-
     findBalance() {
         return this.addTotal() - this.checkAmountValue
     }
-
     addDeductionValue() {
         return this.deductionsValue
     }
-
     findBalanceForward() {
         return this.findBalance() - this.addDeductionValue()
+    }
+    findTotalSpending() {
+        return this.checkAmountValue + this.deductionsValue
     }
 
     displayResults() {
@@ -65,55 +63,116 @@ class balanceCalculator{
         this.checkAmountValue = null
         this.deductionsValue = null
     }
-
 }
 
-function createInputField() {
-   
+// creates user input when plus button is pressed on both deposits and deductions
+let idCounter = 0
+function createUserInput(buttonType) {
+    let newDivInput = document.createElement('div')
+    let newInput = document.createElement('input')
+    let inputButton = document.createElement('button')
+
+    newDivInput.setAttribute('class','input-group')
+    newDivInput.setAttribute('name','input-group')
+    
+    newInput.setAttribute('type','number')
+    newInput.setAttribute('class','form-control')
+    newInput.setAttribute('placeholder','$0.00')
+
+    inputButton.setAttribute('type','button')
+    inputButton.setAttribute('class','btn btn-info')
+    inputButton.setAttribute('onclick',`deleteUserInput(this)`)
+    inputButton.innerHTML = '-'
+
+    // collects the pressed button's id and checks if it's from deposits or deductions
+    if(buttonType.id == 'depositPlusButton') {    
+        newDivInput.setAttribute('id',`plusButtonDiv${idCounter}`)
+        inputButton.setAttribute('id',`plusButton${idCounter}`)
+        newInput.setAttribute('name','depositGroup')
+        newDivInput.appendChild(newInput)
+        newDivInput.appendChild(inputButton)
+        document.getElementById('depositsDiv').appendChild(newDivInput)
+    }
+    if(buttonType.id == 'deductionPlusButton') {
+        newDivInput.setAttribute('id',`minusButtonDiv${idCounter}`)
+        inputButton.setAttribute('id',`minusButton${idCounter}`)
+        newInput.setAttribute('name','deductionGroup')
+        newDivInput.appendChild(newInput)
+        newDivInput.appendChild(inputButton)
+        document.getElementById('deductionsDiv').appendChild(newDivInput)
+    }       
+    idCounter+=1
 }
 
+// deletes input field when minus button pressed
+function deleteUserInput(buttonId) {    
+    document.getElementById(`${buttonId.id}`).parentElement.remove()
+}
+
+// grabs the user's input from the input fields, including the fields created from the plus buttons
 let testing
 function collectUserValues() {
-    // let depositValuesTotal = 0
-    let BBFValue = bbfInput.value
-    let depositValue = depositInput.value
-    let checkAmountValue = checkAmountInput.value
-    let deductionsValue = deductionsInput.value
+    let BBFValue = parseFloat(bbfInput.value)
+    let depositValue = parseFloat(depositInput.value)
+    let checkAmountValue = parseFloat(checkAmountInput.value)
+    let deductionsValue = parseFloat(deductionsInput.value)
 
-    if(BBFValue != "" && depositValue != "" && checkAmountValue != "" && deductionsValue != ""){
-        testing = new balanceCalculator(parseFloat(BBFValue), parseFloat(depositValue), parseFloat(checkAmountValue), parseFloat(deductionsValue))
-        displayResults()
-    } 
-    if(depositValue == "") {
-        depositValue = 0
-    } 
-    if(checkAmountValue == "") {
-        checkAmountValue = 0
-    } 
-    if(deductionsValue == "") {
-        deductionsValue = 0
-    } 
-    if(BBFValue == "") {
+    let depositGroupList = document.getElementsByName('depositGroup')
+    let deductionGroupList = document.getElementsByName('deductionGroup')
+
+    if(isNaN(BBFValue)){
         BBFValue = 0
+        console.log('ran')
     } 
+    if(isNaN(depositValue)){
+        depositValue = 0
+        console.log('ran')
+    } 
+    if(isNaN(checkAmountValue)){
+        checkAmountValue = 0
+        console.log('ran')
+    } 
+    if(isNaN(deductionsValue)){
+        deductionsValue = 0
+        console.log('ran')
+    }
+    if(depositGroupList.length > 0){
+        for(let i = 0; i < depositGroupList.length; i++) {
+            depositValue += parseFloat(depositGroupList[i].value)
+        }
+    }
 
-    testing = new balanceCalculator(parseFloat(BBFValue), parseFloat(depositValue), parseFloat(checkAmountValue), parseFloat(deductionsValue))
+    if(deductionGroupList.length > 0){
+        for(let i = 0; i < deductionGroupList.length; i++) {
+            deductionsValue += parseFloat(deductionGroupList[i].value)
+        }
+    }
+    
+    testing = new BalanceCalculator(BBFValue, depositValue, checkAmountValue, deductionsValue)
     displayResults()
 }
 
+// displays the user's values from collectUserValues()
 function displayResults() {
-    
+    if(testing.addTotal() < (testing.findTotalSpending())) {
+        document.getElementById("balanceForward").style.backgroundColor = "red";
+        document.getElementById("balanceForward").style.color = "#eee"; 
+    } else {
+        document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
+        document.getElementById("balanceForward").style.color = "initial"; }
+
     let results = testing.displayResults()
     depositTotal.innerHTML = results[0]
     balance.innerHTML = results[1]
     otherDeductions.innerHTML = results[2]
     balanceForward.innerHTML = results[3]
-    }   
+}   
 
-function clearUserValues() {
-
+// runs when reset button is clicked
+function resetUserValues() {
     let text = "Are You Sure You Want To Clear?";
     if (confirm(text) == true) {
+        testing = new BalanceCalculator(parseFloat(0), parseFloat(0), parseFloat(0), parseFloat(0))
         testing.clearValues()
         depositTotal.innerHTML = ''
         balance.innerHTML = ''      
@@ -123,24 +182,9 @@ function clearUserValues() {
         depositInput.value = '' 
         checkAmountInput.value = '' 
         deductionsInput.value = '' 
+        document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
+        document.getElementById("balanceForward").style.color = "initial"; 
     } 
-
-   
-}
-
-function darkBackground() {
-    document.getElementById('mainBody').style.backgroundImage = ''
-    document.getElementById('mainBody').style.backgroundColor = '#36454F'
-    document.getElementById('bcTitle').setAttribute('class','text-warning')
-}
-function gradientBackground() {
-    document.getElementById('mainBody').style.backgroundImage = 'linear-gradient(#750004, orange)'
-    document.getElementById('bcTitle').setAttribute('class','text-warning')
-}
-function lightBackground() {
-    document.getElementById('mainBody').style.backgroundImage = ''
-    document.getElementById('mainBody').style.backgroundColor = '#eeeeee'
-    document.getElementById('bcTitle').setAttribute('class','')
 }
 
 // 2690.76 1759.44 327.25 1276.2

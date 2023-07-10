@@ -10,7 +10,8 @@ p, label {
  }
  
  h2 {
-     color: #04691e;
+     /* color: #04691e; */
+    background-color: rgba(0, 255, 102, 0.193);
      /* font-weight: 500;     */
  }
  
@@ -20,12 +21,11 @@ p, label {
    } 
 
 #mainBody {
-    /* background-image: linear-gradient(to bottom right, maroon, navy); */
     background-color: #eeeeee;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-}
+} 
 #inputFormDiv {
     padding: 0px;
 }   
