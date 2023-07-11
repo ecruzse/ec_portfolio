@@ -14,7 +14,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='calculator.css')}}">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="../images/calculator-fill.svg">
 </head>
 <body  id="mainBody">
     
@@ -72,32 +71,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     
     <script>
-
-    function darkMode(){
-        document.getElementById('bcTitle').setAttribute('class','')
-        document.getElementById('form').style.backgroundColor = ''
-        document.getElementById('mainBody').style.backgroundImage = ''
-        document.getElementById('mainBody').setAttribute('data-bs-theme','dark')
-        document.querySelector('html').setAttribute('data-bs-theme','dark')
-        document.getElementById('form').style.backgroundColor = 'darkgray'
-        // document.getElementsByClassName('form-label').style.color = 'white'
-        document.getElementById('mainBody').style.backgroundColor = 'black'
-    }
-    function gradientMode(){
-        document.querySelector('body').setAttribute('data-bs-theme','dark')
-        // document.getElementById('form').style.backgroundColor = '#edc6b2'
-
-        document.getElementById('mainBody').style.backgroundImage = 'linear-gradient(#750004, orange)'
-        document.getElementById('bcTitle').setAttribute('class','text-warning')
-        // #edc6b2 ligth orange
-    }
-    function lightMode(){
-        document.getElementById('bcTitle').setAttribute('class','')
-        document.getElementById('form').style.backgroundColor = ''
-        document.getElementById('mainBody').style.backgroundImage = ''
-        document.getElementById('mainBody').style.backgroundColor = '#eeeeee'
-        document.querySelector('body').setAttribute('data-bs-theme','light')
-    }
 
 
     // changes background color backup

@@ -127,10 +127,11 @@ function collectUserValues() {
 
     if(depositGroupList.length > 0){
         for(let i = 0; i < depositGroupList.length; i++) {
-            if(isNaN(depositGroupList[i].value)){
-                console.log(isNaN(depositGroupList[i].value))
+            if(isNaN(parseFloat(depositGroupList[i].value))){
+                typeof(parseFloat(depositGroupList[i].value))
                 depositValue += 0
             } else {
+                typeof(parseFloat(depositGroupList[i].value))
                 depositValue += parseFloat(depositGroupList[i].value)
             }
         }
@@ -138,8 +139,7 @@ function collectUserValues() {
 
     if(deductionGroupList.length > 0){
         for(let i = 0; i < deductionGroupList.length; i++) {
-            if(isNaN(deductionGroupList[i].value)){
-                console.log(isNaN(deductionGroupList[i].value))
+            if(isNaN(parseFloat(deductionGroupList[i].value))){
                 deductionsValue += 0
             } else {
                 deductionsValue += parseFloat(deductionGroupList[i].value)
