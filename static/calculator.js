@@ -3,14 +3,13 @@ Name: Eric Cruz
 Date: 7/8/23
 */
 
-// TODO - CALCULATE THE DEPOSITS TOTAL JUST LIKE DEDUCTIONS TOTAL, RESET INPUTS FROM ADDED INPUTS 
-
 // DOM elements
 let bbfInput = document.getElementById('bbfInput')
 let depositInput = document.getElementById('depositInput')
 let checkAmountInput = document.getElementById('checkAmountInput')
 let deductionsInput = document.getElementById('deductionsInput')
 
+let enteredDeposits = document.getElementById('enteredDeposits')
 let depositTotal = document.getElementById('depositTotal')
 let balance = document.getElementById('balance')
 let otherDeductions = document.getElementById('otherDeductions')
@@ -18,6 +17,8 @@ let balanceForward = document.getElementById('balanceForward')
 
 let calculateButton = document.getElementById('calculateButton')
 let resetButton = document.getElementById('resetButton')
+let createdDepositFields = document.getElementById('createdFields')
+let createdDeductionFields = document.getElementById('deductionsCreated')
 
 calculateButton.addEventListener('click', collectUserValues)
 resetButton.addEventListener('click', resetUserValues)
@@ -35,6 +36,9 @@ class BalanceCalculator {
     }   
     findBalance() {
         return this.addTotal() - this.checkAmountValue
+    }
+    findDepositsValue() {
+        return this.depositsValue
     }
     addDeductionValue() {
         return this.deductionsValue
@@ -91,7 +95,7 @@ function createUserInput(buttonType) {
         newInput.setAttribute('name','depositGroup')
         newDivInput.appendChild(newInput)
         newDivInput.appendChild(inputButton)
-        document.getElementById('depositsDiv').appendChild(newDivInput)
+        createdDepositFields.appendChild(newDivInput)
     }
     if(buttonType.id == 'deductionPlusButton') {
         newDivInput.setAttribute('id',`minusButtonDiv${idCounter}`)
@@ -99,7 +103,8 @@ function createUserInput(buttonType) {
         newInput.setAttribute('name','deductionGroup')
         newDivInput.appendChild(newInput)
         newDivInput.appendChild(inputButton)
-        document.getElementById('deductionsDiv').appendChild(newDivInput)
+        createdDeductionFields.appendChild(newDivInput)
+        
     }       
     idCounter+=1
 }
@@ -120,34 +125,41 @@ function collectUserValues() {
     let depositGroupList = document.getElementsByName('depositGroup')
     let deductionGroupList = document.getElementsByName('deductionGroup')
 
-    if(isNaN(BBFValue)){
-        BBFValue = 0
-        console.log('ran')
-    } 
-    if(isNaN(depositValue)){
-        depositValue = 0
-        console.log('ran')
-    } 
-    if(isNaN(checkAmountValue)){
-        checkAmountValue = 0
-        console.log('ran')
-    } 
-    if(isNaN(deductionsValue)){
-        deductionsValue = 0
-        console.log('ran')
-    }
     if(depositGroupList.length > 0){
         for(let i = 0; i < depositGroupList.length; i++) {
-            depositValue += parseFloat(depositGroupList[i].value)
+            if(isNaN(depositGroupList[i].value)){
+                console.log(isNaN(depositGroupList[i].value))
+                depositValue += 0
+            } else {
+                depositValue += parseFloat(depositGroupList[i].value)
+            }
         }
     }
 
     if(deductionGroupList.length > 0){
         for(let i = 0; i < deductionGroupList.length; i++) {
-            deductionsValue += parseFloat(deductionGroupList[i].value)
+            if(isNaN(deductionGroupList[i].value)){
+                console.log(isNaN(deductionGroupList[i].value))
+                deductionsValue += 0
+            } else {
+                deductionsValue += parseFloat(deductionGroupList[i].value)
+            }
         }
     }
-    
+
+    if(isNaN(BBFValue)){
+        BBFValue = 0
+    } 
+    if(isNaN(depositValue)){
+        depositValue = 0
+    } 
+    if(isNaN(checkAmountValue)){
+        checkAmountValue = 0
+    } 
+    if(isNaN(deductionsValue)){
+        deductionsValue = 0
+    }
+
     testing = new BalanceCalculator(BBFValue, depositValue, checkAmountValue, deductionsValue)
     displayResults()
 }
@@ -162,6 +174,7 @@ function displayResults() {
         document.getElementById("balanceForward").style.color = "initial"; }
 
     let results = testing.displayResults()
+    enteredDeposits.innerHTML = `Deposit Total $${testing.findDepositsValue()}`
     depositTotal.innerHTML = results[0]
     balance.innerHTML = results[1]
     otherDeductions.innerHTML = results[2]
@@ -179,11 +192,15 @@ function resetUserValues() {
         otherDeductions.innerHTML = ''  
         balanceForward.innerHTML = ''
         bbfInput.value = '' 
-        depositInput.value = '' 
+        depositInput.value = ''
         checkAmountInput.value = '' 
         deductionsInput.value = '' 
+        enteredDeposits.innerHTML =''
         document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
         document.getElementById("balanceForward").style.color = "initial"; 
+        createdDepositFields.innerHTML = ''
+        createdDeductionFields.innerHTML = ''
+        
     } 
 }
 
