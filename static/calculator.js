@@ -1,207 +1,202 @@
 /*
 Name: Eric Cruz 
 Date: 7/8/23
+OOP based calculator
 */
 
-// DOM elements
-let bbfInput = document.getElementById('bbfInput')
-let depositInput = document.getElementById('depositInput')
-let checkAmountInput = document.getElementById('checkAmountInput')
-let deductionsInput = document.getElementById('deductionsInput')
 
-let enteredDeposits = document.getElementById('enteredDeposits')
-let depositTotal = document.getElementById('depositTotal')
-let balance = document.getElementById('balance')
-let otherDeductions = document.getElementById('otherDeductions')
-let balanceForward = document.getElementById('balanceForward')
+// TODO - ADD FUNCTION TO 
+function BalanceCalculator() {
 
-let calculateButton = document.getElementById('calculateButton')
-let resetButton = document.getElementById('resetButton')
-let createdDepositFields = document.getElementById('createdFields')
-let createdDeductionFields = document.getElementById('deductionsCreated')
+    // DOM elements
+    this.bbfInput = document.getElementById('bbfInput')
+    this.depositInput = document.getElementById('depositInput')
+    this.checkAmountInput = document.getElementById('checkAmountInput')
+    this.deductionsInput = document.getElementById('deductionsInput')
 
-calculateButton.addEventListener('click', collectUserValues)
-resetButton.addEventListener('click', resetUserValues)
+    this.enteredDeposits = document.getElementById('enteredDeposits')
+    this.depositTotal = document.getElementById('depositTotal')
+    this.balance = document.getElementById('balance')
+    this.otherDeductions = document.getElementById('otherDeductions')
+    this.balanceForward = document.getElementById('balanceForward')
 
-//class performs calculations
-class BalanceCalculator {
-    constructor(balanceBBFValue, depositsValue, checkAmountValue, deductionsValue) {
-        this.balanceBBFValue = balanceBBFValue  
-        this.depositsValue = depositsValue
-        this.checkAmountValue = checkAmountValue
-        this.deductionsValue = deductionsValue
-    }
-    addTotal() {
-        return this.balanceBBFValue + this.depositsValue
+    this.calculateButton = document.getElementById('calculateButton')
+    this.resetButton = document.getElementById('resetButton')
+    this.createdDepositFields = document.getElementById('createdFields')
+    this.createdDeductionFields = document.getElementById('deductionsCreated')
+    
+    this.depositPlusButton = document.getElementById('depositPlusButton')
+    this.deductionPlusButton = document.getElementById('deductionsCreated')
+
+    this.createdDepositFields = document.getElementById('createdFields')
+    this.createdDeductionFields = document.getElementById('deductionsCreated')
+
+    this.idCounter = 0
+
+    
+    this.addTotal = function addTotal() {
+        return this.bbfInput + this.depositValue
     }   
-    findBalance() {
+    this.findBalance = function findBalance() {
         return this.addTotal() - this.checkAmountValue
     }
-    findDepositsValue() {
+    this.findDepositsValue = function findDepositsValue() {
         return this.depositsValue
     }
-    addDeductionValue() {
+    this.addDeductionValue = function addDeductionValue() {
         return this.deductionsValue
     }
-    findBalanceForward() {
+    this.findBalanceForward = function findBalanceForward() {
         return this.findBalance() - this.addDeductionValue()
     }
-    findTotalSpending() {
+    this.findTotalSpending = function findTotalSpending() {
         return this.checkAmountValue + this.deductionsValue
     }
 
-    displayResults() {
-        let results = []
+    // grabs the user's input from the input fields, including the fields created from the plus buttons
+    this.collectUserValues = function collectUserValues() {
+        let BBFValue = parseFloat(bbfInput.value)
+        let depositValue = parseFloat(depositInput.value)
+        let checkAmountValue = parseFloat(checkAmountInput.value)
+        let deductionsValue = parseFloat(deductionsInput.value)
+
+        let depositGroupList = document.getElementsByName('depositGroup')
+        let deductionGroupList = document.getElementsByName('deductionGroup')
+
+        if(depositGroupList.length > 0){
+            for(let i = 0; i < depositGroupList.length; i++) {
+                if(isNaN(parseFloat(depositGroupList[i].value))){
+                    typeof(parseFloat(depositGroupList[i].value))
+                    depositValue += 0
+                } else {
+                    typeof(parseFloat(depositGroupList[i].value))
+                    depositValue += parseFloat(depositGroupList[i].value)
+                }
+            }
+        }
+
+        if(deductionGroupList.length > 0){
+            for(let i = 0; i < deductionGroupList.length; i++) {
+                if(isNaN(parseFloat(deductionGroupList[i].value))){
+                    deductionsValue += 0
+                } else {
+                    deductionsValue += parseFloat(deductionGroupList[i].value)
+                }
+            }
+        }
+
+        if(isNaN(BBFValue)){
+            BBFValue = 0
+        } 
+        if(isNaN(depositValue)){
+            depositValue = 0
+        } 
+        if(isNaN(checkAmountValue)){
+            checkAmountValue = 0
+        } 
+        if(isNaN(deductionsValue)){
+            deductionsValue = 0
+        }
+
+        this.bbfInput = BBFValue
+        this.depositValue = depositValue
+        this.checkAmountValue = checkAmountValue
+        this.deductionsValue = deductionsValue        
+        this.displayResults()
+    }
+
+    this.displayResults = function displayResults() {
         let total = ` Total $${this.addTotal().toFixed(2)}`
         let balance = `Balance $${this.findBalance().toFixed(2)}`
         let otherDeductions = `Deductions Total $${this.addDeductionValue().toFixed(2)}`
         let balanceForward = `Balance Forward $${this.findBalanceForward().toFixed(2)}`
-        results.push(total,balance, otherDeductions, balanceForward)
+
+    // displays the user's values from collectUserValues()
+        if(this.addTotal() < (this.findTotalSpending())) {
+            document.getElementById("balanceForward").style.backgroundColor = "red";
+            document.getElementById("balanceForward").style.color = "#eee"; 
+        } else {
+            document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
+            document.getElementById("balanceForward").style.color = "initial"; }
+
+        this.depositTotal.innerHTML = total
+        this.balance.innerHTML = balance
+        this.otherDeductions.innerHTML = otherDeductions
+        this.balanceForward.innerHTML = balanceForward
+    }   
+
+    // creates user input when plus button is pressed on both deposits and deductions
+    this.createUserInput = function createUserInput(buttonType) {
+        let newDivInput = document.createElement('div')
+        let newInput = document.createElement('input')
+        let inputButton = document.createElement('button')
+
+        newDivInput.setAttribute('class','input-group')
+        newDivInput.setAttribute('name','input-group')
         
-        return results
-    }
+        newInput.setAttribute('type','number')
+        newInput.setAttribute('class','form-control')
+        newInput.setAttribute('placeholder','$0.00')
 
-    clearValues() {
-        this.balanceBBFValue = null 
-        this.depositsValue = null
-        this.checkAmountValue = null
-        this.deductionsValue = null
-    }
-}
+        inputButton.setAttribute('type','button')
+        inputButton.setAttribute('class','btn btn-info')
+        inputButton.setAttribute('onclick',`initializeClass.deleteUserInput(this)`)
+        inputButton.innerHTML = '-'
 
-// creates user input when plus button is pressed on both deposits and deductions
-let idCounter = 0
-function createUserInput(buttonType) {
-    let newDivInput = document.createElement('div')
-    let newInput = document.createElement('input')
-    let inputButton = document.createElement('button')
-
-    newDivInput.setAttribute('class','input-group')
-    newDivInput.setAttribute('name','input-group')
-    
-    newInput.setAttribute('type','number')
-    newInput.setAttribute('class','form-control')
-    newInput.setAttribute('placeholder','$0.00')
-
-    inputButton.setAttribute('type','button')
-    inputButton.setAttribute('class','btn btn-info')
-    inputButton.setAttribute('onclick',`deleteUserInput(this)`)
-    inputButton.innerHTML = '-'
-
-    // collects the pressed button's id and checks if it's from deposits or deductions
-    if(buttonType.id == 'depositPlusButton') {    
-        newDivInput.setAttribute('id',`plusButtonDiv${idCounter}`)
-        inputButton.setAttribute('id',`plusButton${idCounter}`)
-        newInput.setAttribute('name','depositGroup')
-        newDivInput.appendChild(newInput)
-        newDivInput.appendChild(inputButton)
-        createdDepositFields.appendChild(newDivInput)
-    }
-    if(buttonType.id == 'deductionPlusButton') {
-        newDivInput.setAttribute('id',`minusButtonDiv${idCounter}`)
-        inputButton.setAttribute('id',`minusButton${idCounter}`)
-        newInput.setAttribute('name','deductionGroup')
-        newDivInput.appendChild(newInput)
-        newDivInput.appendChild(inputButton)
-        createdDeductionFields.appendChild(newDivInput)
-        
-    }       
-    idCounter+=1
-}
-
-// deletes input field when minus button pressed
-function deleteUserInput(buttonId) {    
-    document.getElementById(`${buttonId.id}`).parentElement.remove()
-}
-
-// grabs the user's input from the input fields, including the fields created from the plus buttons
-let testing
-function collectUserValues() {
-    let BBFValue = parseFloat(bbfInput.value)
-    let depositValue = parseFloat(depositInput.value)
-    let checkAmountValue = parseFloat(checkAmountInput.value)
-    let deductionsValue = parseFloat(deductionsInput.value)
-
-    let depositGroupList = document.getElementsByName('depositGroup')
-    let deductionGroupList = document.getElementsByName('deductionGroup')
-
-    if(depositGroupList.length > 0){
-        for(let i = 0; i < depositGroupList.length; i++) {
-            if(isNaN(parseFloat(depositGroupList[i].value))){
-                typeof(parseFloat(depositGroupList[i].value))
-                depositValue += 0
-            } else {
-                typeof(parseFloat(depositGroupList[i].value))
-                depositValue += parseFloat(depositGroupList[i].value)
-            }
+        // collects the pressed button's id and checks if it's from deposits or deductions
+        if(buttonType == 'depositPlusButton') {    
+            newDivInput.setAttribute('id',`plusButtonDiv${this.idCounter}`)
+            inputButton.setAttribute('id',`plusButton${this.idCounter}`)
+            newInput.setAttribute('name','depositGroup')
+            newDivInput.appendChild(newInput)
+            newDivInput.appendChild(inputButton)
+            this.createdDepositFields.appendChild(newDivInput)
+            
         }
-    }
-
-    if(deductionGroupList.length > 0){
-        for(let i = 0; i < deductionGroupList.length; i++) {
-            if(isNaN(parseFloat(deductionGroupList[i].value))){
-                deductionsValue += 0
-            } else {
-                deductionsValue += parseFloat(deductionGroupList[i].value)
-            }
-        }
-    }
-
-    if(isNaN(BBFValue)){
-        BBFValue = 0
-    } 
-    if(isNaN(depositValue)){
-        depositValue = 0
-    } 
-    if(isNaN(checkAmountValue)){
-        checkAmountValue = 0
-    } 
-    if(isNaN(deductionsValue)){
-        deductionsValue = 0
-    }
-
-    testing = new BalanceCalculator(BBFValue, depositValue, checkAmountValue, deductionsValue)
-    displayResults()
-}
-
-// displays the user's values from collectUserValues()
-function displayResults() {
-    if(testing.addTotal() < (testing.findTotalSpending())) {
-        document.getElementById("balanceForward").style.backgroundColor = "red";
-        document.getElementById("balanceForward").style.color = "#eee"; 
-    } else {
-        document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
-        document.getElementById("balanceForward").style.color = "initial"; }
-
-    let results = testing.displayResults()
-    enteredDeposits.innerHTML = `Deposit Total $${testing.findDepositsValue()}`
-    depositTotal.innerHTML = results[0]
-    balance.innerHTML = results[1]
-    otherDeductions.innerHTML = results[2]
-    balanceForward.innerHTML = results[3]
-}   
-
-// runs when reset button is clicked
-function resetUserValues() {
-    let text = "Are You Sure You Want To Clear?";
-    if (confirm(text) == true) {
-        testing = new BalanceCalculator(parseFloat(0), parseFloat(0), parseFloat(0), parseFloat(0))
-        testing.clearValues()
-        depositTotal.innerHTML = ''
-        balance.innerHTML = ''      
-        otherDeductions.innerHTML = ''  
-        balanceForward.innerHTML = ''
-        bbfInput.value = '' 
-        depositInput.value = ''
-        checkAmountInput.value = '' 
-        deductionsInput.value = '' 
-        enteredDeposits.innerHTML =''
-        document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
-        document.getElementById("balanceForward").style.color = "initial"; 
-        createdDepositFields.innerHTML = ''
-        createdDeductionFields.innerHTML = ''
+        if(buttonType == 'deductionPlusButton') {
+            newDivInput.setAttribute('id',`minusButtonDiv${this.idCounter}`)
+            inputButton.setAttribute('id',`minusButton${this.idCounter}`)
+            newInput.setAttribute('name','deductionGroup')
+            newDivInput.appendChild(newInput)
+            newDivInput.appendChild(inputButton)
+            this.createdDeductionFields.appendChild(newDivInput)
+            
+        }       
+        this.idCounter+=1
         
-    } 
+    }
+
+    // deletes input field when minus button pressed
+    this.deleteUserInput = function deleteUserInput(buttonId) {    
+        document.getElementById(`${buttonId.id}`).parentElement.remove()
+    }
+   
+    // runs when reset button is clicked
+    this.resetUserValues = function resetUserValues() {
+        let text = "Are You Sure You Want To Clear?";
+        if (confirm(text) == true) {
+            
+            document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
+            document.getElementById("balanceForward").style.color = "initial"; 
+            
+            this.createdDepositFields.innerHTML = ''
+            this.createdDeductionFields.innerHTML = ''
+            this.bbfInput.value = ''
+            this.depositTotal.innerHTML = ''
+            this.balance.innerHTML = ''   
+            this.otherDeductions.innerHTML = ''
+            this.balanceForward.innerHTML = ''
+
+            document.getElementById('bbfInput').value = ''
+            document.getElementById('checkAmountInput').value = ''
+            document.getElementById('depositInput').value = ''
+            document.getElementById('deductionsInput').value = ''
+        } 
+    }
 }
 
+function createMainClass() {    
+    initializeClass = new BalanceCalculator();
+};
+createMainClass();
 // 2690.76 1759.44 327.25 1276.2
