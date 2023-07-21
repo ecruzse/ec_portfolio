@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='index/index.css')}}">{% endblock%}
 
 {% block content %} 
 <main>
-
+<!-- 
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
@@ -23,13 +26,12 @@
           <div class="col">
             <div class="card shadow-sm">
               <img src="/static/balanceCalc.png" alt="Balance Calculator">
-              <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
               <div class="card-body">
                 <p class="card-text">Balance Calculator</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-md btn-outline-secondary"><a href="calculator">View</a></button>
-                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+
                   </div>
                   <small class="text-body-secondary"></small>
                 </div>
@@ -44,7 +46,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                    
                   </div>
                   <small class="text-body-secondary"></small>
                 </div>
@@ -71,6 +73,9 @@
         </div>
       </div>
     </div>
-  
-  </main>
-{% endblock%}
+   -->
+  <p>joe mama</p>
+</main> 
+{% endblock %}
+
+{% block script %}<script src="{{ url_for('static', filename='index/index.js')}}"></script>{% endblock %}

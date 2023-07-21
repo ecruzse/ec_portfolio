@@ -29,7 +29,7 @@ function BalanceCalculator() {
     };
 
     this.domElements = {};
-    this.domList = ["bbfInput", "depositInput", "checkAmountInput", "deductionsInput",'enteredDeposits','depositTotal','balance','otherDeductions','balanceForward','calculateButton', 'resetButton','depositPlusButton','deductionsCreated','createdFields','createdDepositFields','createdDeductionFields']
+    this.domList = ["bbfInput", "depositInput", "checkAmountInput", "deductionsInput",'enteredDeposits','depositTotal','balance','otherDeductions','balanceForward','calculateButton', 'resetButton','depositPlusButton','deductionsCreated','createdFields','createdDepositFields','createdDeductionFields'];
     // creates the DOM object and assigns the key value pairs
     this.domCreate = function domCreate(){
         for(let i = 0; i <= this.domList.length; i++){
@@ -163,19 +163,20 @@ function BalanceCalculator() {
             document.getElementById("balanceForward").style.backgroundColor = "rgba(0, 255, 102, 0.193)";
             document.getElementById("balanceForward").style.color = "initial"; 
             
+            document.getElementById('bbfInput').value = '';
+            this.domElements['checkAmountInput'].value = '';
+            this.domElements['depositInput'].value = '';
+            this.domElements['deductionsInput'].value = '';
+
+            this.domElements['balance'].innerHTML = '';
+            this.domElements['otherDeductions'].innerHTML = '';
+            this.domElements['balanceForward'].innerHTML = '';
             this.domElements['createdDepositFields'].innerHTML = '';
             this.domElements['createdDeductionFields'].innerHTML = '';
             this.domElements['depositTotal'].innerHTML = '';
-            this.balance.innerHTML = ''   ;
-            this.otherDeductions.innerHTML = '';
-            this.balanceForward.innerHTML = '';
-
-            document.getElementById('bbfInput').value = '';
-            document.getElementById('checkAmountInput').value = '';
-            document.getElementById('depositInput').value = '';
-            document.getElementById('deductionsInput').value = '';
         } ;
     };    
+
 };
 
 function createMainClass() {    
