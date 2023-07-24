@@ -176,8 +176,14 @@ function BalanceCalculator() {
             this.domElements['depositTotal'].innerHTML = '';
         } ;
     };    
-
 };
+
+BaseThemeChanger.cssVar = '--divBackground-color'
+// BaseThemeChanger.color = 'rgb(144, 238, 144)'
+BaseThemeChanger.color = '#49db21'
+
+// BaseThemeChanger.cssVar = ' --fontColor'
+// BaseThemeChanger.color = 'orange'
 
 function createMainClass() {    
     initializeClass = new BalanceCalculator();

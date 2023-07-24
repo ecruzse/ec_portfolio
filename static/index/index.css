@@ -1,3 +1,22 @@
 /* html {
     background-color: orange;
 } */
+
+/* change hover later to class for all links  */
+#calculatorLinkImage {
+    width: 100%;
+}
+
+/* #calculatorLink:hover {
+   
+
+} */
+
+#calculatorCardBody:hover {
+    border-style: solid;
+    border-color: skyblue;
+}
+
+#albumSection {
+    background-image: linear-gradient(skyblue, blue);
+}

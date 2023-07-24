@@ -5,8 +5,8 @@
 
 {% block content %} 
 <main>
-<!-- 
-    <section class="py-5 text-center container">
+
+    <section class="py-5 text-center container" id="albumSection">  
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">Album example</h1>
@@ -18,27 +18,62 @@
         </div>
       </div>
     </section>
-  
+
     <div class="album py-5 bg-body-tertiary">
       <div class="container">
   
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <div class="col">
             <div class="card shadow-sm">
-              <img src="/static/balanceCalc.png" alt="Balance Calculator">
-              <div class="card-body">
+              
+              <div class="card-body" id="calculatorCardBody"  title="Click To Visit The Calculator">
+                <a href="calculator"><img src="static/calculator/balanceCalc.jpg" alt="Balance Calculator" id="calculatorLinkImage"></a>
                 <p class="card-text">Balance Calculator</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
+                  <!-- <div class="btn-group">
                     <button type="button" class="btn btn-md btn-outline-secondary"><a href="calculator">View</a></button>
 
-                  </div>
+                  </div> -->
                   <small class="text-body-secondary"></small>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="col">
+            <div class="card shadow-sm">
+              
+              <div class="card-body" id="">
+                <a href="calculator"><img src="" alt="next project 1" id="calculatorLinkImage"></a>
+                <p class="card-text">Next project 1</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- <div class="btn-group">
+                    <button type="button" class="btn btn-md btn-outline-secondary"><a href="calculator">View</a></button>
+
+                  </div> -->
+                  <small class="text-body-secondary"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card shadow-sm">
+              
+              <div class="card-body" id="">
+                <a href="calculator"><img src="" alt="next project 2" id="calculatorLinkImage"></a>
+                <p class="card-text">Next project 2</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- <div class="btn-group">
+                    <button type="button" class="btn btn-md btn-outline-secondary"><a href="calculator">View</a></button>
+
+                  </div> -->
+                  <small class="text-body-secondary"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col">
             <div class="card shadow-sm">
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
               <div class="card-body">
@@ -68,13 +103,13 @@
               </div>
             </div>
           </div>
-  
+   -->
          
         </div>
       </div>
     </div>
-   -->
-  <p>joe mama</p>
+
+  
 </main> 
 {% endblock %}
 

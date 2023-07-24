@@ -1,5 +1,6 @@
 :root {
     --divBackground-color: rgba(0, 255, 102, 0.193);
+    --fontColor: ;
   }
 
 p, label {
@@ -10,9 +11,17 @@ p, label {
 
 body {
      font-family:'PT Serif', serif;
+     animation: loadFadeIn ease .5s;
+     /* animation-iteration-count: 1; */
+     /* animation-fill-mode: forwards; */
  } 
 
- 
+ @keyframes loadFadeIn {
+    0%   {opacity: .1;}
+    100%   {opacity: 1;}
+  }
+  
+
 #buttons {
     margin-top: 30px;
 }
@@ -20,36 +29,31 @@ body {
 
 #depositTotal, #balance, #otherDeductions {
     background-color: var(--divBackground-color);
+    color: var(--fontColor);
+}
+
+
+@keyframes fadeIn {
+    0%   {opacity: .1;}
+    50%   {opacity: .5;}
+    100%   {opacity: 1;}
+  }
+  
+
+div#createdDepositFields > div, div#createdDeductionFields > div  {
+    animation-name: fadeIn;
+    animation-duration: .25s;
+}
+
+#calculateButton:active {
+    background-color: skyblue;
+    box-shadow: 0 1px navy;
+    transform: translateY(4px);
+}
+
+#resetButton:active {
+    background-color: rgb(250, 15, 125);
+    box-shadow: 0 1px maroon;
+    transform: translateY(4px);
 }
   
-  /*  
-#mainBody {
-    background-color: #eeeeee;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-} 
-#inputFormDiv {
-    padding: 0px;
-}   
-
-#form {
-    background-color: white;
-
-}
-*/
-
-
-/*  
- h1 {
-     
-     margin-bottom: 20px;
- }
- 
- h2 {
-     
-    background-color: rgba(0, 255, 102, 0.193);
-     
- }
- 
- */
