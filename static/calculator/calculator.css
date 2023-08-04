@@ -9,6 +9,11 @@ p, label {
     /* color: #5C695E; */
  }
 
+@keyframes loadFadeIn {
+    0%   {opacity: .1;}
+    100%   {opacity: 1;}
+}
+  
 body {
      font-family:'PT Serif', serif;
      animation: loadFadeIn ease .5s;
@@ -16,29 +21,22 @@ body {
      /* animation-fill-mode: forwards; */
  } 
 
- @keyframes loadFadeIn {
-    0%   {opacity: .1;}
-    100%   {opacity: 1;}
-  }
-  
-
 #buttons {
     margin-top: 30px;
 }
-
-
-#depositTotal, #balance, #otherDeductions {
-    background-color: var(--divBackground-color);
-    color: var(--fontColor);
-}
-
 
 @keyframes fadeIn {
     0%   {opacity: .1;}
     50%   {opacity: .5;}
     100%   {opacity: 1;}
-  }
+}
   
+#depositTotal, #balance, #otherDeductions {
+    background-color: var(--divBackground-color);
+    color: var(--fontColor);
+    animation-name: fadeIn;
+    animation-duration: 2.5s;
+}
 
 div#createdDepositFields > div, div#createdDeductionFields > div  {
     animation-name: fadeIn;
@@ -57,3 +55,12 @@ div#createdDepositFields > div, div#createdDeductionFields > div  {
     transform: translateY(4px);
 }
   
+
+.names {
+    padding: 2% 2% 2% 2%;
+}
+
+#maleNames {
+    font-size:x-large;
+    
+}

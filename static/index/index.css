@@ -7,16 +7,11 @@
     width: 100%;
 }
 
-/* #calculatorLink:hover {
-   
-
-} */
-
 #calculatorCardBody:hover {
     border-style: solid;
     border-color: skyblue;
 }
 
 #albumSection {
-    background-image: linear-gradient(skyblue, blue);
+    /* background-image: linear-gradient(skyblue, blue); */
 }

@@ -17,7 +17,7 @@ function ThemeChangerClass() {
             document.getElementById('htmlTag').setAttribute('data-bs-theme', 'dark')
         }if(light == 'light'){
             document.getElementById('htmlTag').setAttribute('data-bs-theme', 'light')
-            rgba(0, 255, 102, 0.193)
+            // rgba(0, 255, 102, 0.193)
         };
     };
 };
