@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}GAAP Authentication{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='GAAP/gaapAuth.css')}}">{% endblock%}
+
+{% block content %} 
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaap Authentication</title>
+</head>
+<body>
+
+    <div class="container text-center" id="parentDiv">
+
+        <div id="childContainer">
+            <div id="titleDiv">
+                <h1>Enter Password</h1>
+            </div>
+
+            <div id="formDiv">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    
+                    <input type="password" name="pw" id="pw" placeholder="password">
+                    <button type="submit" id="pwButton">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock %}
+
+<script src="{{ url_for('static', filename='GAAP/gaapAuth.js')}}"></script>
+
+{% block script %}<script src="{{ url_for('static', filename='GAAP/gaapAuth.js')}}"></script>{% endblock %}

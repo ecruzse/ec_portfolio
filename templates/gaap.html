@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Home Page{% endblock %}
 
-{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='GAP/gap.css')}}">{% endblock%}
+{% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='GAAP/gaap.css')}}">{% endblock%}
 
 {% block content %} 
 
@@ -41,6 +41,7 @@
 </div>
 <div id="overlay"></div>
 
+
 <!--1. Draggable Tiles -->
 <div class="container container-fluid" name="nameContainer" >
     <div class="container">
@@ -60,8 +61,6 @@
                 </div>
             </div>
 
-            
-
             <div class="col" id="nameButtonSpan">
                 <button data-modal-target="#mod" type="button" class="btn" id="nameButton" data-modal-target="#modal">Add Name</button> <!-- &#43 is + symbol-->
             </div>
@@ -72,7 +71,7 @@
             <span><input type="date" class="date" id="date1">-<input type="date" class="date" id="date2"></span>
         </div> -->
 
-        <div class="container">
+        <div class="container w-75" id="printableArea">
             <span class="row">
                 <span class="col">
                     <span class="assignment" name="assignmentFields">Presidente: </span>
@@ -110,35 +109,106 @@
                 </span>
             </span>
 
-            <span class="row">
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Lectura de la Biblia: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
-            </span>
+
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    
+                  </div>
+                  <div class="col-sm">
+                    Sala Auxiliar
+                  </div>
+                  <div class="col-sm">
+                    Sala Principal
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg">
+                        <span class="assignment" name="assignmentFields">Lectura de la Biblia: </span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                  </div>
+            </div>
 
             <h2 class="meetingTitles" id="maestros">Seamos mejores maestros</h2>
 
-            <span class="row">
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Primera conversación: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
-            </span>
+            <!-- grid -->
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                  </div>
 
-            <span class="row">
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Revisita: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
-            </span>
+                  <div class="col-sm">
+                    Sala Auxiliar
+                  </div>
+                  <div class="col-sm">
+                    Sala Principal
+                  </div>
+                </div>
 
-            <span class="row">
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Discurso: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
-            </span>
+                <div class="row">
+                    <div class="col-sm">
+                        <span class="assignment" name="assignmentFields">Primera conversación: </span>
+                        
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                        <span class="assignment" name="assignmentFields">Revisita: </span>
+                        
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                        <span class="assignment" name="assignmentFields">Curso Biblico: </span>
+                        
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                        <span class="assignment" name="assignmentFields">Discurso: </span>
+                        
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                    <div class="col-sm">
+                        <span class="nameField" name="assignmentFields">&plus;</span>
+                    </div>
+                  </div>
+
+
+
+              </div>
+
+
 
             <h2 class="meetingTitles" id="vidaCristiana">Nuestra vida cristiana</h2>
 
@@ -162,14 +232,14 @@
                     <span class="nameField" name="assignmentFields">&plus;</span>
                 </span>
             </span>
-
-
-        <div class="text-center" id="formDiv">
-            <button class="btn btn-info" id="fillButton" type="button">Fill Out Form</button>
-        </div>
     </div>
+
+    <div class="text-center" id="formDiv">
+        <button class="btn btn-info" id="fillButton" type="button">Fill Out Form</button>
+    </div>
+
 </div>
 
 {% endblock %}
 
-{% block script %}<script src="{{ url_for('static', filename='GAP/gap.js')}}"></script>{% endblock %}
+{% block script %}<script src="{{ url_for('static', filename='GAAP/gaap.js')}}"></script>{% endblock %}

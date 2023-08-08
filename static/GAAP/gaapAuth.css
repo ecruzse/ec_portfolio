@@ -1,0 +1,52 @@
+#parentDiv {
+    background-color: lightskyblue;
+    margin-top: 10%;
+    border-radius: 20px;
+    width: 50%;
+}
+
+#childContainer {
+    /* background-color: orange; */
+    padding: 10% 0 10% 0;
+}
+
+#titleDiv {
+    /* padding: 5% 0 0 10%; */
+}
+#formDiv {
+    /* display: inline-block; */
+    padding: 3%;
+}
+
+button {
+    padding: 2%;
+    background-color: lightgreen;
+    border: none;
+}
+
+button:hover {
+    background-color: green;
+    border-radius: 8px;
+    color: white;
+}
+
+input {
+    border-radius: 5px;
+    background-color: orange;
+    padding: 2%;
+    border: none;
+}
+
+
+@keyframes side2side {
+    0%   {transform: translate(0px);}
+    25%   {transform: translate(5px);}
+    75%   {transform: translate(-5px);}
+    100%   {transform: translate(0px);}
+}
+
+input:hover {
+    background-color: pink;
+    /* animation-name: side2side;
+    animation-duration: 100ms; */
+}
