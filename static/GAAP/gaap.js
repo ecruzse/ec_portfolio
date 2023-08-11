@@ -187,26 +187,26 @@ assignNames()
 
 
 // prints page when filled out
-// fillButton.addEventListener('click', printPage) 
+fillButton.addEventListener('click', printPage) 
 
-// function printPage() {
-//     console.log('pressed')
-//     let printableArea = document.querySelector('#printableArea').innerHTML
-//     let unPrintableArea = document.body.innerHTML
+function printPage() {
+    console.log('pressed')
+    let printableArea = document.querySelector('#printableArea').innerHTML
+    let unPrintableArea = document.body.innerHTML
     
-//     if (confirm('Are You Sure You Want to Print?') == true) {
+    if (confirm('Are You Sure You Want to Print?') == true) {
      
-//         // removes everything outside of the printable area prints it then puts the other info back
-//         document.body.innerHTML = printableArea
-//         window.print()
-//         document.body.innerHTML = unPrintableArea
-//         // location.reload()
-//     } else {
-//         // document.body.innerHTML = unPrintableArea
-//         console.log('ok')
-//     }
+        // removes everything outside of the printable area prints it then puts the other info back
+        document.body.innerHTML = printableArea
+        window.print()
+        document.body.innerHTML = unPrintableArea
+        // location.reload()
+    } else {
+        // document.body.innerHTML = unPrintableArea
+        console.log('ok')
+    }
     
-// }
+}
 
 
 

@@ -1,0 +1,10 @@
+@media print {
+    body {
+        background-color: orange;
+        /* font-size: 150px; */
+    }
+
+    .fillbutton {
+        display: none;
+    }
+}
