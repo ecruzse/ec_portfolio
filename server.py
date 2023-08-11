@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
-from pdfMaker import *
 
 app = Flask(__name__)
 
@@ -17,12 +16,6 @@ def calculator():
 
 @app.route("/gaap", methods=['GET','POST'])
 def gaap():
-    file = render_template('gaap.html')
-    if request.method == 'POST':
-        # pdfkit.from_file('templates/gaap.html', 'gaap.pdf')
-        # makeCopy()
-        # makePDF() 
-        pass
     return render_template('gaap.html')
 key = 'password'
 

@@ -137,7 +137,7 @@
     padding: 1% 0 1% 3%;
 }
 
-.row:nth-child(odd) {
+.row:nth-child(even) {
     background-color: rgba(156, 150, 149, .1);
     /* font-weight: bold; */
     font-style: italic;
@@ -270,4 +270,3 @@
 [data-set-gender="female"] {
     background-color: pink;
 }
-

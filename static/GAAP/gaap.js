@@ -199,10 +199,8 @@ function printPage() {
         // removes everything outside of the printable area prints it then puts the other info back
         document.body.innerHTML = printableArea
         window.print()
-        document.body.innerHTML = unPrintableArea
-        // location.reload()
+        location.reload()
     } else {
-        // document.body.innerHTML = unPrintableArea
         console.log('ok')
     }
     
