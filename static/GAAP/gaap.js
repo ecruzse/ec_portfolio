@@ -9,13 +9,14 @@ const femaleSpan = document.getElementById('femaleSpan');
 const maleSpan = document.getElementById('maleSpan'); 
 const fillButton = document.getElementById('fillButton'); 
 
+// TODO - add new names to proper div, add new name into participants object
 
 // modal consts
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
 
-let participants = {
+const participants = {
     male: {
         0: {first: 'LeBron', last: 'James'},
         1: {first: 'Michael', last: 'Jordan'},
@@ -75,7 +76,7 @@ function closeModal(modal) {
     addNameInput.value = ''
 }
 
-// add name button functionality
+// add name button functionality from modal
 addNameButton.addEventListener('click', collectData)   
 function collectData() {
     let newName = document.getElementById('addNameInput').value
@@ -89,12 +90,20 @@ function collectData() {
             }
     })
 
-    console.log(radioValue)
+    // console.log(radioValue)
     addNames(newName, radioValue)
-
-   
+    addNameToParticipants(newName, radioValue)
 } 
 
+// adds name to object 
+function addNameToParticipants(newName) {
+    console.log(newName.split(' '))
+    let separatedStr = newName.split(' ')
+    participants['male'][4] = {first:`${separatedStr[0]}`, last:`${separatedStr[1]}`}
+    assignNames()
+}
+
+// displays names in name space/span
 function addNames(newName, radioValue) {
 
     let nameSpan = document.createElement('span')
@@ -107,18 +116,19 @@ function addNames(newName, radioValue) {
         if (radioValue == 'male') {
             nameSpan.setAttribute('name', 'male')
             nameSpan.setAttribute('data-set-gender', 'male')
-            console.log('male')
-            mNameSpan.appendChild(nameSpan)
+            // console.log('male')
+            // mNameSpan.appendChild(nameSpan)
+            maleSpan.appendChild(nameSpan)
             
         } else {
-            console.log('female')
+            // console.log('female')
             nameSpan.setAttribute('name', 'female')
             nameSpan.setAttribute('data-set-gender', 'female')
-            wNameSpan.appendChild(nameSpan)
+            // wNameSpan.appendChild(nameSpan)
+            femaleSpan.appendChild(nameSpan)
             
         }
         assignNames()
-    
 }
 
 // dragging functionality
@@ -132,8 +142,8 @@ function assignNames() {
     
     draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', () => {
-            console.log('draggables for each')
-            console.log(draggables)
+            // console.log('draggables for each')
+            // console.log(draggables)
             draggable.classList.add('dragging')
         })
 
@@ -144,8 +154,8 @@ function assignNames() {
 
     containers.forEach(container => {
         container.addEventListener('dragover', e => {
-            console.log('containers for each')
-            console.log(draggables)
+            // console.log('containers for each')
+            // console.log(draggables)
             e.preventDefault()
             const afterElement = getDragAfterElement(container, e.clientY)
             const draggable = document.querySelector('.dragging')
@@ -163,7 +173,7 @@ function assignNames() {
         draggableElements.reduce((closest, child) => {
             const box = child.getBoundingClientRect()
             const offset = y - box.top - box.height / 2 
-            console.log(offset)
+            // console.log(offset)
             if (offset < 0 && offset > closest.offset) {
                 return {offset: offset, element: child}
             }   else {
@@ -177,26 +187,26 @@ assignNames()
 
 
 // prints page when filled out
-fillButton.addEventListener('click', printPage) 
+// fillButton.addEventListener('click', printPage) 
 
-function printPage() {
-    console.log('pressed')
-    let printableArea = document.querySelector('#printableArea').innerHTML
-    let unPrintableArea = document.body.innerHTML
+// function printPage() {
+//     console.log('pressed')
+//     let printableArea = document.querySelector('#printableArea').innerHTML
+//     let unPrintableArea = document.body.innerHTML
     
-    if (confirm('Are You Sure You Want to Print?') == true) {
+//     if (confirm('Are You Sure You Want to Print?') == true) {
      
-        // removes everything outside of the printable area prints it then puts the other info back
-        document.body.innerHTML = printableArea
-        window.print()
-        document.body.innerHTML = unPrintableArea
-        // location.reload()
-    } else {
-        // document.body.innerHTML = unPrintableArea
-        console.log('ok')
-    }
+//         // removes everything outside of the printable area prints it then puts the other info back
+//         document.body.innerHTML = printableArea
+//         window.print()
+//         document.body.innerHTML = unPrintableArea
+//         // location.reload()
+//     } else {
+//         // document.body.innerHTML = unPrintableArea
+//         console.log('ok')
+//     }
     
-}
+// }
 
 
 
