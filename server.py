@@ -21,7 +21,7 @@ def gaap():
     if request.method == 'POST':
             # pdfkit.from_file(['templates/gaap.html','static/GAAP/gaap.css'], 'gaap.pdf')
             copyFile()
-            # pdfkit.from_file('gaap_copy.html', 'gaap.pdf')
+            pdfkit.from_file('gaap_copy.html', 'gaap.pdf')
     return render_template('gaap.html')
 
 key = 'password'
