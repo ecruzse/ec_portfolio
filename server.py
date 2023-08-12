@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 
 app = Flask(__name__)
 
-@app.route("/base", methods=['GET', 'POST'])
+@app.route("/base", methods=['GET', 'POST'])    
 def base():
     return render_template('base.html')
 

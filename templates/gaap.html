@@ -8,6 +8,7 @@
 
 {% block content %} 
 
+
 <!-- modal -->
 <div class="mod" id="mod">
     <div class="mod-header">
@@ -44,38 +45,41 @@
 </div>
 <div id="overlay"></div>
 
-
 <!--1. Draggable Tiles -->
-<div class="container container-fluid" name="nameContainer" >
-    <div class="container">
-
-        <div class="container text-center" id="nameContainer">
-            <div class="row">
-                <div class="col" id="mNameSpan">
-                    <p>Male</p>
-                    <!-- <span>&plus;</span> -->
-                    <span class="nameField" name="assignmentFields" id="maleSpan">M</span>
-                </div>
-
-                <div class="col" id="wNameSpan">
-                    <p>Female</p>
-                    <!-- <span>&plus;</span> -->
-                    <span class="nameField" name="assignmentFields" id="femaleSpan">F</span>
-                </div>
-            </div>
-
-            <div class="col" id="nameButtonSpan">
-                <button data-modal-target="#mod" type="button" class="btn" id="nameButton" data-modal-target="#modal">Add Name</button> <!-- &#43 is + symbol-->
-            </div>
+<div class="container text-center" id="nameContainer">
+    <div class="row">
+        <div class="col" id="mNameSpan">
+            <p>Male</p>
             
+            <span class="nameField" name="assignmentFields" id="maleSpan">M</span>
         </div>
-       
-        <!-- <div  id="dateDiv">
-            <span><input type="date" class="date" id="date1">-<input type="date" class="date" id="date2"></span>
-        </div> -->
 
+        <div class="col" id="wNameSpan">
+            <p>Female</p>
+            
+            <span class="nameField" name="assignmentFields" id="femaleSpan">F</span>
+        </div>
+    </div>
+
+    <div class="col" id="nameButtonSpan">
+        <button data-modal-target="#mod" type="button" class="btn" id="nameButton" data-modal-target="#modal">Add Name</button> 
+    </div>
+    
+</div>
+
+<!-- printable area div -->
+<div class="container container-fluid" name="nameContainer" id="main">
+    <div class="container">
+        
+        <!-- main content -->
         <div class="container w-75" id="printableArea">
-            <span class="row">
+
+        <!-- dates -->
+        <div  id="dateDiv">
+            <span><input type="date" class="date" id="date1">-<input type="date" class="date" id="date2"></span>
+        </div>
+
+            <span class="row"> 
                 <span class="col">
                     <span class="assignment" name="assignmentFields">Presidente: </span>
                     <span class="nameField" name="assignmentFields">&plus;</span>
@@ -100,6 +104,7 @@
 
             <span class="row">
                 <span class="col">
+                    <!-- <input type="text" name="" id=""> -->
                     <span class="assignment" name="assignmentFields">10 minutos: </span>
                     <span class="nameField" name="assignmentFields">&plus;</span>
                 </span>
@@ -234,10 +239,10 @@
         </form>
     </div>
 
-    <span id="gifSpan">
+    <div id="gifSpan">
         <p>Does the print page not have color or styling?</p>
         <img src="static/GAAP/activate_css_print.GIF" alt="how to enable styling when printing" id="gif">
-    </span>
+    </div>
 
 </div>
 

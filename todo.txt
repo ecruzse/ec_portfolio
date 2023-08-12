@@ -1,3 +1,4 @@
 
 2.change assignments to some type of input field to put the name of the assignment
 3.add the week of the assignments 
+4. try putting names on the side instead of on top

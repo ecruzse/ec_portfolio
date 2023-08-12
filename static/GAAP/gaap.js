@@ -8,6 +8,8 @@ const addNameInput = document.getElementById('addNameInput');
 const femaleSpan = document.getElementById('femaleSpan'); 
 const maleSpan = document.getElementById('maleSpan'); 
 const fillButton = document.getElementById('fillButton'); 
+const date1 = document.getElementById('date1'); 
+const date2 = document.getElementById('date2'); 
 
 // TODO - add new names to proper div, add new name into participants object
 
@@ -202,80 +204,6 @@ function printPage() {
         location.reload()
     } else {
         console.log('ok')
-    }
-    
+    }    
 }
-
-
-
-
-
-
-// draggables.forEach(draggable => {
-//     draggable.addEventListener('dragstart', () => {
-//         console.log('draggables for each')
-//         console.log(draggables)
-//         draggable.classList.add('dragging')
-//     })
-
-//     draggable.addEventListener('dragend', () => {
-//         draggable.classList.remove('dragging')
-//     })
-// })
-
-// containers.forEach(container => {
-//     container.addEventListener('dragover', e => {
-//         console.log('containers for each')
-//         console.log(draggables)
-//         e.preventDefault()
-//         const afterElement = getDragAfterElement(container, e.clientY)
-//         const draggable = document.querySelector('.dragging')
-//         if(afterElement == null) {
-//             container.appendChild(draggable)
-//         } else {
-//             container.insertBefore(draggable, afterElement)
-//         }
-//     })
-// })
-
-// function getDragAfterElement(container, y) {
-//     const draggableElements = [...container.querySelectorAll('draggable:not(.dragging)')]
-
-//     draggableElements.reduce((closest, child) => {
-//         const box = child.getBoundingClientRect()
-//         const offset = y - box.top - box.height / 2 
-//         console.log(offset)
-//         if (offset < 0 && offset > closest.offset) {
-//             return {offset: offset, element: child}
-//         }   else {
-//             closest
-//             }
-//         }, { offset: Number.NEGATIVE_INFINITY }).element
-// }
-
-// change dates
-// let dateOne = document.getElementById('date1')
-// dateOne.addEventListener('mouseout', () => {
-//     if(document.getElementById('date1').value !== '') {
-//         changeDate()
-//     }})
-
-// function changeDate() {
-//     let oldDateString = dateOne.value    
-//     let dateString = oldDateString.substring(8,10)
-//     let newDay = parseInt(dateString) + 7
-//     let newDateString = ''
-//     let finalDate = ''
-
-//     if(newDay <= 9 && newDay >= 0) {
-//         newDateString = "0" + newDay
-//         finalDate = oldDateString.replace(dateString, newDateString)
-//         dateTwo = finalDate
-//         document.getElementById('date2').value = finalDate
-//     } else {
-//         newDateString = newDay.toString()
-//         finalDate = oldDateString.replace(dateString, newDateString)
-//         document.getElementById('date2').value = finalDate
-//     }
-// }
 
