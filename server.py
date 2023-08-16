@@ -17,6 +17,7 @@ def calculator():
 @app.route("/gaap", methods=['GET','POST'])
 def gaap():
     return render_template('gaap.html')
+
 key = 'password'
 
 @app.route("/auth", methods=["GET", "POST"])

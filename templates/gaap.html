@@ -49,13 +49,13 @@
 <div class="container text-center" id="nameContainer">
     <div class="row">
         <div class="col" id="mNameSpan">
-            <p>Male</p>
+            <!-- <p>Male</p> -->
             
             <span class="nameField" name="assignmentFields" id="maleSpan">M</span>
         </div>
 
         <div class="col" id="wNameSpan">
-            <p>Female</p>
+            <!-- <p>Female</p> -->
             
             <span class="nameField" name="assignmentFields" id="femaleSpan">F</span>
         </div>
@@ -70,49 +70,77 @@
 <!-- printable area div -->
 <div class="container container-fluid" name="nameContainer" id="main">
     <div class="container">
-        
+
+        <!-- date span -->
+    <span class="col">
+        <span><input type="text" oninput="displayText('dateInput')" id="dateInput" placeholder="Enter Week EX: 9/4-10/23"></input></span>
+        <span><input type="text" oninput="displayText('textInput')" id="textInput" placeholder="Enter Text For Week"></input></span>
+    </span>
+
         <!-- main content -->
         <div class="container w-75" id="printableArea">
 
-        <!-- dates -->
-        <div  id="dateDiv">
-            <span><input type="date" class="date" id="date1">-<input type="date" class="date" id="date2"></span>
+    
+
+        <!-- header -->
+        <div id="titleHeader">
+            <span id="groupName">East Spanish</span>
+            <span id="titleDescription">Programa para la reunión de entre semana</span>
         </div>
 
-            <span class="row"> 
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Presidente: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
+        <!-- fills in from date span input -->
+        <span class="row">
+            <span class="col" id="dateAndText">
+                <span id="dateSpan"></span>
+                <span id="dateSpan">|&nbsp;</span>
+                <span id="textSpan"></span>
             </span>
-            
-            <span class="row">
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Consejero de la sala auxiliar: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
+<!-- TODO: agadsfas -->
+            <span class="col">
+                <span name="assignmentFields">Presidente:</span>
+                <span class="nameField" name="assignmentFields">&plus;</span>
+            </span>
+        </span>
+
+        <span class="row">
+            <span class="col">
+                <span class="assignment" name="assignmentFields">Canción: </span>
+                <!-- <span class="nameField" name="assignmentFields">&plus;</span> -->
             </span>
 
-            <span class="row">
-                <span class="col">
-                    <span class="assignment" name="assignmentFields">Oración: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
-                </span>
+            <span class="col">
+                <span name="assignmentFields">Consejero de la sala auxiliar:</span>
+                <span class="nameField" name="assignmentFields">&plus;</span>
             </span>
+        </span>
+
+        <span class="row">
+            <span class="col">
+                <span class="assignment" name="assignmentFields">Comentarios de apertura (1 min.): </span>
+                <span class="nameField" name="assignmentFields">&plus;</span>
+            </span>
+
+            <span class="col">
+                <span name="assignmentFields">Oración:</span>
+                <span class="nameField" name="assignmentFields">&plus;</span>
+            </span>
+        </span>
+       
+
 
             <h2 class="meetingTitles" id="tesoros">Tesoros de la Biblia</h2>
 
             <span class="row">
                 <span class="col">
                     <!-- <input type="text" name="" id=""> -->
-                    <span class="assignment" name="assignmentFields">10 minutos: </span>
+                    <span class="assignment" name="assignmentFields"> user enter (10 min.): </span>
                     <span class="nameField" name="assignmentFields">&plus;</span>
                 </span>
             </span>
 
             <span class="row">
                 <span class="col">
-                    <span class="assignment" name="assignmentFields">Busquemos perlas escondidas: </span>
+                    <span class="assignment" name="assignmentFields">Busquemos perlas escondidas (10 min.): </span>
                     <span class="nameField" name="assignmentFields">&plus;</span>
                 </span>
             </span>
@@ -126,7 +154,7 @@
                 <div class="col">
                 Sala Principal
                 </div>
-
+            </div>
                 <span class="row">
                     <span class="col">
                         <span class="assignment" name="assignmentFields">Lectura de la Biblia: </span>
@@ -141,7 +169,7 @@
                         <span class="nameField" name="assignmentFields">&plus;</span>
                     </span>
                 </span>
-            </div>
+            
 
                
             <h2 class="meetingTitles" id="maestros">Seamos mejores maestros</h2>
@@ -161,45 +189,45 @@
 
                     <span class="row">
                         <span class="col">
-                            <span class="assignment" name="assignmentFields">Oración: </span>
+                            <span class="assignment"  name="assignmentFields">Primera conversación (3 min.): </span>
                             <!-- <span class="nameField" name="assignmentFields">&plus;</span> -->
                         </span>
 
                         <span class="col">
-                            <span class="nameField" name="assignmentFields">&plus;</span>
+                            <span class="nameField" data-rows="inner" name="assignmentFields">&plus;</span>
                         </span>
 
                         <span class="col">
-                            <span class="nameField" name="assignmentFields">&plus;</span>
+                            <span class="nameField" data-rows="inner" name="assignmentFields">&plus;</span>
                         </span>
                     </span>
 
                     <span class="row">
                         <span class="col">
-                            <span class="assignment" name="assignmentFields">Oración: </span>
+                            <span class="assignment" name="assignmentFields">Revisita (4 min.): </span>
                             <!-- <span class="nameField" name="assignmentFields">&plus;</span> -->
                         </span>
 
                         <span class="col">
-                            <span class="nameField" name="assignmentFields">&plus;</span>
+                            <span class="nameField" data-rows="inner" name="assignmentFields">&plus;</span>
                         </span>
 
                         <span class="col">
-                            <span class="nameField" name="assignmentFields">&plus;</span>
+                            <span class="nameField" data-rows="inner" name="assignmentFields">&plus;</span>
                         </span>
                     </span>
 
                     <span class="row">
                         <span class="col">
-                            <span class="assignment" name="assignmentFields">Oración: </span>
+                            <span class="assignment"  name="assignmentFields">Discurso (5 min.): </span>
                         </span>
 
                         <span class="col">
-                            <span class="nameField" name="assignmentFields">&plus;</span>
+                            <span class="nameField" data-rows="inner" name="assignmentFields">&plus;</span>
                         </span>
 
                         <span class="col">
-                            <span class="nameField" name="assignmentFields">&plus;</span>
+                            <span class="nameField" data-rows="inner" name="assignmentFields">&plus;</span>
                         </span>
                     </span>
 
@@ -212,6 +240,13 @@
 
             <span class="row">
                 <span class="col">
+                    <span class="assignment">Canción: </span>
+                </span>
+            </span>
+
+
+            <span class="row">
+                <span class="col">
                     <span class="assignment" name="assignmentFields">15 min: </span>
                     <span class="nameField" name="assignmentFields">&plus;</span>
                 </span>
@@ -219,18 +254,24 @@
 
             <span class="row">
                 <span class="col">
-                    <span class="assignment" name="assignmentFields">Estudio bíblico de la congregación: </span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
+                    <span class="assignment" name="assignmentFields">Estudio bíblico de la congregación (30 min.): </span>
                 </span>
             </span>
 
             <span class="row">
                 <span class="col">
-                    <span class="assignment" name="assignmentFields">Oración:</span>
-                    <span class="nameField" name="assignmentFields">&plus;</span>
+                    <span class="assignment" name="assignmentFields">Comentarios de conclusión (3 min.): </span>
+                    
                 </span>
             </span>
     
+            <span class="row">
+                <span class="col">
+                    <span class="assignment">Canción: </span>
+                </span>
+            </span>
+
+
         </div>
 
     <div class="text-center" id="formDiv">

@@ -202,8 +202,21 @@ function printPage() {
         document.body.innerHTML = printableArea
         window.print()
         location.reload()
+        // event.preventDefault()
     } else {
         console.log('ok')
+        event.preventDefault()
     }    
 }
+
+
+function displayText(self) {
+    if(self == 'dateInput'){
+        document.getElementById("dateSpan").innerText = document.getElementById(self).value;
+    } 
+    if(self == 'textInput'){
+        document.getElementById("textSpan").innerText = document.getElementById(self).value;
+    }
+  }
+
 
