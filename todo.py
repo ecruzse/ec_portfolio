@@ -1,0 +1,13 @@
+
+# 2.change assignments to some type of input field to put the name of the assignment
+# # 3. add the week of the assignments 
+# 5. dont allow male names to enter female names n vice versa
+# 6. add and clear session storage, backend
+# 7. let user create new assignment if needed
+# 8. add create new form button 
+# change app to more general use
+
+
+
+
+# _______ COMPLETED __________

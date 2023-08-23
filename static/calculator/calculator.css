@@ -64,3 +64,74 @@ div#createdDepositFields > div, div#createdDeductionFields > div  {
     font-size:x-large;
     
 }
+
+.modalDiv {
+    display: none;
+    position: fixed; /* Stay in place */
+    border-radius: 10px;
+    /* border: solid brown; */
+    width: 50%;
+    height: 50%;
+    z-index: 5; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid lightblue;
+    width: 25%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    border-radius: 10px;
+}
+
+#closeBtn {
+    color: #aaa;
+    font-size: 25px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    /* float: right; */
+    margin-left: 2%;
+}
+
+
+@keyframes wiggle {
+    0% {transform: rotate(0deg);}
+    25% {transform: rotate(4deg);}
+    50% {transform: rotate(0deg)}
+    75% {transform: rotate(-4deg);}
+    100% {transform: rotate(0deg);}
+}
+
+#mYes, #mNo { 
+    /* background-color: yellow; */
+    border: none;
+    border-radius: 5px;
+    padding: 2%;
+    margin: 2%;
+    cursor: pointer;
+    font-size: large;
+    
+}
+
+#mYes:hover, #mNo:hover { 
+    animation-name: wiggle;
+    animation-duration: 200ms;
+    background-color: darkgray;
+}
+
+#closeBtn:hover {
+    background-color: red;
+    color: white;
+    animation-name: wiggle;
+    animation-duration: 200ms;
+}

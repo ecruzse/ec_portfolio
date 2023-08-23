@@ -97,11 +97,15 @@ function collectData() {
     addNameToParticipants(newName, radioValue)
 } 
 
+
 // adds name to object 
 function addNameToParticipants(newName) {
-    console.log(newName.split(' '))
+    // console.log(newName.split(' '))
     let separatedStr = newName.split(' ')
     participants['male'][4] = {first:`${separatedStr[0]}`, last:`${separatedStr[1]}`}
+    
+    sessionStorage.setItem = {first:`${separatedStr[0]}`, last:`${separatedStr[1]}`}
+    console.log(sessionStorage)
     assignNames()
 }
 
@@ -130,7 +134,7 @@ function addNames(newName, radioValue) {
             femaleSpan.appendChild(nameSpan)
             
         }
-        assignNames()
+        // assignNames()
 }
 
 // dragging functionality
