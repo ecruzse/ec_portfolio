@@ -18,8 +18,6 @@ def calculator():
 def gaap():
     return render_template('gaap.html')
 
-key = 'password'
-
 @app.route("/auth", methods=["GET", "POST"])
 def authentication():
 
