@@ -1,4 +1,7 @@
+import os
 from flask import Flask, redirect, url_for, render_template, request, session, flash
+# from dotenv import load_dotenv
+
 
 app = Flask(__name__)
 
@@ -18,6 +21,8 @@ def calculator():
 def gaap():
     return render_template('gaap.html')
 
+key = os.getenv("GAAP_PW")
+
 @app.route("/auth", methods=["GET", "POST"])
 def authentication():
 
@@ -33,4 +38,5 @@ def test():
 
 
 if __name__ == "__main__":
+    # load_dotenv()
     app.run(debug=True)

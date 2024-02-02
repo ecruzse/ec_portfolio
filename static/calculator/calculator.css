@@ -25,6 +25,10 @@ body {
     margin-top: 30px;
 }
 
+#bcTitle {
+    margin-top: 100px;
+}
+
 @keyframes fadeIn {
     0%   {opacity: .1;}
     50%   {opacity: .5;}
@@ -91,6 +95,10 @@ div#createdDepositFields > div, div#createdDeductionFields > div  {
     width: 25%; /* Could be more or less, depending on screen size */
     text-align: center;
     border-radius: 10px;
+    font-size: 1.5em;
+    color: gray;
+    
+
 }
 
 #closeBtn {
@@ -99,7 +107,7 @@ div#createdDepositFields > div, div#createdDeductionFields > div  {
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    /* float: right; */
+    float: right;
     margin-left: 2%;
 }
 
@@ -116,17 +124,21 @@ div#createdDepositFields > div, div#createdDeductionFields > div  {
     /* background-color: yellow; */
     border: none;
     border-radius: 5px;
-    padding: 2%;
+    padding:2% 5% 2% 5%;
     margin: 2%;
     cursor: pointer;
     font-size: large;
+    /* color: navy; */
+    
     
 }
 
 #mYes:hover, #mNo:hover { 
     animation-name: wiggle;
     animation-duration: 200ms;
-    background-color: darkgray;
+    /* background-color: darkgray; */
+    background-color: lightgreen;
+    /* color: lightgreen; */
 }
 
 #closeBtn:hover {

@@ -10,7 +10,7 @@
 {% block content %} 
 
  <!-- title -->
- <div class="text-center mt-5">
+ <div class="text-center mt-5" id="mainTitle">
     <h1 id="bcTitle">Balance Calculator</h1>
 </div>
 
@@ -20,8 +20,12 @@
 <!-- modal -->
 <div class="modalDiv" id="modal">
   <div class="content">
-    <span>Are you sure you want to reset?</span>
     <span><button id="closeBtn" type="button">&times;</button></span>
+    <div>
+      <span>Are you sure you want to reset?</span>
+    </div>
+    <!-- <span><button id="closeBtn" type="button" onclick="initializeClass.closeModal()">&times;</button></span> -->
+    
 
     <div>
       <span><button id="mYes" type="button">Yes</button></span>
@@ -29,8 +33,6 @@
     </div>
   </div>
 </div>
-
-
 
 <!--FORM START-->
   <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto" id="formDiv">
@@ -94,7 +96,7 @@
     <!-- calculate and reset buttons -->
     <div id="buttons" class="d-grid gap-3 mt-3 d-md-flex justify-content-sm-end">
       <button class="btn btn-primary btn-lg" type="button" id="calculateButton" onclick="initializeClass.collectUserValues()">Calculate</button>
-      <!-- <button class="btn btn-info btn-lg btn-danger" type="button" id="resetButton" onclick="initializeClass.resetUserValues()">Reset</button> -->
+      <!-- <button class="btn btn-info btn-lg btn-danger" type="button" id="resetButton" onclick="initializeClass.showModal()">Reset</button> -->
       <button class="btn btn-info btn-lg btn-danger" type="button" id="resetButton">Reset</button>
     </div>  
   </div>
